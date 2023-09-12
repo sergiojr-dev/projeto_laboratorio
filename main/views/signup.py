@@ -27,12 +27,12 @@ class Signup(View):
 
             if password1 == password2:
 
-                user = Usuario.create_user(username=username, password=password1)
+                user = Usuario.objects.create_user(username=username, password=password1)
 
                 if user:
-                    login(request, user)
-
+                    #login(request, user)
                     return HttpResponseRedirect(reverse('dashboard'))
+                
                 else:
                     messages.error(request, 'Usuário não encontrado.')
 

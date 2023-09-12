@@ -5,21 +5,19 @@
 </head>
 <body>
     <h1>Registro de Usuário</h1>
-    <form method="post">
+    <form method="post" action="{% url 'signup' %}">
         {% csrf_token %}
-
-        {{ form.username.label_tag }}
+    
         {{ form.username }}
-        <br>
-        {{ form.password1.label_tag }}
+        <br><br>
         {{ form.password1 }}
-        <br>
-        {{ form.password2.label_tag }}
+        <br><br>
         {{ form.password2 }}
-
-        <br>
+    
+        <br><br>
         <button type="submit">Registrar</button>
     </form>
+    
 
     {% if messages %}
         <ul class="messages">
