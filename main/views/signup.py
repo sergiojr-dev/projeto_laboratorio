@@ -2,7 +2,7 @@ from django.views import View
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from ..models import Usuario
+from ..models import User
 from ..forms.singup_forms import SignupForms
 from django.contrib import messages
 from django.contrib.auth import login
@@ -27,11 +27,11 @@ class Signup(View):
 
             if password1 == password2:
 
-                user = Usuario.objects.create_user(username=username, password=password1)
+                user = User.objects.create_user(username=username, password=password1)
 
                 if user:
                     #login(request, user)
-                    return HttpResponseRedirect(reverse('dashboard'))
+                    return HttpResponseRedirect(reverse('dashboard', kwargs={'username':username}))
                 
                 else:
                     messages.error(request, 'Usuário não encontrado.')
