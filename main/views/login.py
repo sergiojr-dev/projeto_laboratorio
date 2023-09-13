@@ -7,15 +7,16 @@ from django.contrib.auth import authenticate, login
 
 class Login(View):
     def get(self, request):
-        form = LoginForm
+        form = LoginForm()
         formulario = {'form': form}
 
         return render(request, 'login.html', formulario)
     
     def post(self, request):
-        if request.method == 'POST':
-            username = request.POST['username']
-            password = request.POST['password']
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
 
             user = authenticate(request, username=username, password=password)
 
@@ -24,7 +25,7 @@ class Login(View):
 
                 return redirect('dashboard', username=request.user.username)
             
-            else:
-                messages.error(request, 'Credenciais invalidas.')
-
-                return render(request, 'login.html')
+        messages.error(request, 'Credenciais invalidas.')
+        form = LoginForm()
+        formulario = {'form': form}
+        return render(request, 'login.html', formulario)

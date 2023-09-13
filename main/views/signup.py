@@ -2,7 +2,7 @@ from django.views import View
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from ..models import User
+from ..models import Usuario
 from ..forms.singup_forms import SignupForms
 from django.contrib import messages
 from django.contrib.auth import login
@@ -12,6 +12,7 @@ class Signup(View):
     def get(self, request):
         form = SignupForms()
         data = {'form': form}
+
         return render(request, 'signup.html', data)
     
 
@@ -24,13 +25,16 @@ class Signup(View):
             username = form.cleaned_data['username']
             password1 = form.cleaned_data['password1']
             password2 = form.cleaned_data['password2']
+            print(username)
+            print(password1)
+            print(password2)
 
             if password1 == password2:
 
-                user = User.objects.create_user(username=username, password=password1)
+                user = Usuario.objects.create_user(username=username, password=password1)
 
                 if user:
-                    #login(request, user)
+                    login(request, user)
                     return HttpResponseRedirect(reverse('dashboard', kwargs={'username':username}))
                 
                 else:

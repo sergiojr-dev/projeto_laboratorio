@@ -1,16 +1,16 @@
 from django.views.generic import View
-from django.contrib.auth.models import User
+from ..models import Usuario
 from django.shortcuts import render, get_object_or_404
 
 class Dashboard(View):
 
-    # def get(self, request):
+        # def get(self, request):
 
-    #     return render(request, 'dashboard.html')
+        #     return render(request, 'dashboard.html')
 
 
     def get(self, request, username):
-        # username = self.kwargs['username']
-        user = get_object_or_404(User, username=username)
+        print({'username': 'userna'})
+        user = get_object_or_404(Usuario, username=username)
 
-        return render(request, 'dashboar.html', {'user': user})
+        return render(request, 'dashboard.html', {'user': user})
