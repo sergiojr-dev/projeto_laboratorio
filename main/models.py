@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Resto do seu código de modelos aqui...
 
-class UserManager(BaseUserManager):
+class UserManager(BaseUserManager):    
     use_in_migrations = True
 
     def _create_user(self, username, password, **extra_fields):
@@ -36,6 +36,12 @@ class UserManager(BaseUserManager):
         return self._create_user(username, password, **extra_fields)
 
 class User(AbstractUser):
+
+    ATIVO_INATIVO = [
+            (1, 'ativo'),
+            (2, 'inativo')
+        ]
+    
     first_name = models.CharField(_("first name"), max_length=150, blank=True)
     username = models.CharField(_("username"), max_length=60, unique=True)
     is_staff = models.BooleanField(
@@ -44,7 +50,8 @@ class User(AbstractUser):
         help_text=_("Designates whether the user can log into this admin site."),
     )
     is_active = models.BooleanField(
-        _("active"),
+         _("active"),
+        #choices=ATIVO_INATIVO
         default=True,
         help_text=_(
             "Designates whether this user should be treated as active. "
@@ -100,12 +107,7 @@ class Usuario(AbstractUser):
         (2, "professor")
     ]
 
-    ATIVO_INATIVO = [
-        (1, 'ativo'),
-        (2, 'inativo')
-    ]
-
-    cpf_cnpj = models.CharField(max_length=14)
+    cpf_cnpj = models.CharField(max_length=14, blank=False)
     phone = models.CharField(max_length=12)
     user = models.CharField(max_length=20, choices=USUARIOS, default='1')
 

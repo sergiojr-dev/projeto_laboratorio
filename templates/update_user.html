@@ -11,7 +11,15 @@
     <h2>Atualizar Cadastro</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.username }}<br><br>
+        {{ form.first_name }}<br><br>
+        {{ form.last_name }}<br><br>
+        {{ form.email }}<br><br>
+        {{ form.password }}<br><br>
+        {{ form.is_active }}<br><br>
+        {{ form.user}}<br><br>
+        {{ form.cpf_cnpj }}<br><br>
+        {{ form.phone }}<br><br>
         <button type="submit">Salvar Alterações</button>
     </form>
 </body>
