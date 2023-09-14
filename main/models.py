@@ -107,7 +107,7 @@ class Usuario(AbstractUser):
 
     cpf_cnpj = models.CharField(max_length=14)
     phone = models.CharField(max_length=12)
-    user = models.CharField(max_length=20, choices=USUARIOS, default='')
+    user = models.CharField(max_length=20, choices=USUARIOS, default='1')
 
     groups = models.ManyToManyField(
         Group,
