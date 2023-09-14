@@ -26,9 +26,8 @@ class UserUpdateForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'placeholder': 'Telefone'}),
         }
 
-    #user = forms.ChoiceField(choices=USUARIO, widget=forms.Select(attrs={'placeholder': 'Usuário'}))
     user = forms.ChoiceField(
-        choices=[('', 'Selecione...')] + USUARIO,  # Adiciona "Selecione..." como a primeira opção
+        choices=[('', 'Selecione...')] + USUARIO, 
         widget=forms.Select(attrs={'placeholder': 'Usuário'})
     )
 
