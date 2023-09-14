@@ -1,5 +1,5 @@
-from django.views import View
+from django.contrib.auth.views import LogoutView
 
 
-class Logout(View):
-    pass
+class Logout(LogoutView):
+    next_page = 'login'
