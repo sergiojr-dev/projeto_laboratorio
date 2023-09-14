@@ -10,4 +10,3 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Senha'}),
         strip=False
         )
-    
