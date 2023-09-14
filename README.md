@@ -2,13 +2,13 @@
 
 Projeto será separado em 3 app django separados.
 
-1. SO primeiro será o (APP DE USUÁRIO) que será o app principal a onde será constatado as seguintes funcionalidades.
+1. O primeiro APP será o (APP DE USUÁRIO que é o APP MAIN) que será o app principal a onde será constatado as seguintes funcionalidades.
 
     1.0 (VIEW)
         1 - cadastro de usuário.
         2 - login do usuário e a validação de acesso.
         3 - logou do usuário.
-        4 - atualização de cadastro do usuário (ainda falta fazer).
+        4 - atualização de cadastro do usuário.
     
     2.0 (FORMS)
         explicando as configurações do projeto.
