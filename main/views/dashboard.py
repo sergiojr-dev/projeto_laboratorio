@@ -1,13 +1,10 @@
 from django.views.generic import View
 from ..models import Usuario
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class Dashboard(View):
 
-        # def get(self, request):
-
-        #     return render(request, 'dashboard.html')
-
+class Dashboard(LoginRequiredMixin, View):
 
     def get(self, request, username):
         print({'username': 'userna'})
