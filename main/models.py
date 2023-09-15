@@ -50,8 +50,7 @@ class User(AbstractUser):
         help_text=_("Designates whether the user can log into this admin site."),
     )
     is_active = models.BooleanField(
-        # _("active"),
-        choices=ATIVO_INATIVO,
+        _("active"),
         default=True,
         help_text=_(
             "Designates whether this user should be treated as active. "
