@@ -15,13 +15,12 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model= Usuario
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'is_active', 'user', 'cpf_cnpj', 'phone']
+        fields = ['username', 'first_name', 'last_name', 'email', 'is_active', 'user', 'cpf_cnpj', 'phone']
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'Nome de usuário'}),
             'first_name': forms.TextInput(attrs={'placeholder': 'Primeiro nome'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Sobrenome'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Endereço de email'}),
-            'password': forms.PasswordInput(attrs={'placeholder': 'Senha'}),
             'cpf_cnpj': forms.TextInput(attrs={'placeholder': 'CPF/CNPJ'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Telefone'}),
         }
