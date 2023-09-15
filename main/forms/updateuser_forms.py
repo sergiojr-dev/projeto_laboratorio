@@ -29,8 +29,8 @@ class UserUpdateForm(forms.ModelForm):
         choices=[('', 'Selecione...')] + USUARIO, 
         widget=forms.Select(attrs={'placeholder': 'Usuário'})
     )
-
-    is_active = forms.ChoiceField(
-        choices=[('', 'Usuário Ativo / Inativo')] + ATIVO_INATIVO,
-        widget=forms.Select(attrs={'placeholder': 'Ativo / Inativo'})
+    is_active = forms.BooleanField(
+        label='Status',
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': 'custom-class'}),
     )
