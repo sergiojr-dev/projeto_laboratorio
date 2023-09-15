@@ -1,12 +1,24 @@
-from django.views.generic.edit import UpdateView
+from django.views import View
+from django.shortcuts import render, redirect
 from ..models import Usuario
 from ..forms.updateuser_forms import UserUpdateForm
-from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class UpdateUser(LoginRequiredMixin, UpdateView):
-    model = Usuario
-    form_class = UserUpdateForm
+class UpdateUser(LoginRequiredMixin, View):
     template_name = 'update_user.html'
-    success_url = reverse_lazy('dashboard') 
+
+    def get(self, request, pk):
+        user = Usuario.objects.get(pk=pk)
+        form = UserUpdateForm(instance=user)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, pk):
+        user = Usuario.objects.get(pk=pk)
+        form = UserUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+
+
+        return render(request, self.template_name, {'form': form})
