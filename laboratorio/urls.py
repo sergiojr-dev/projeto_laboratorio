@@ -5,6 +5,7 @@ from main.views.errors import CustomErrorServer
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+    path('', include('laboratory.urls'))
 ]
 
 
