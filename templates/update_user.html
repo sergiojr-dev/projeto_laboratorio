@@ -11,13 +11,20 @@
     <a href="{% url 'dashboard' username=user %}">Perfil</a>
 
     <h2>Atualizar Cadastro</h2>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         {{ form.username }}<br><br>
         {{ form.first_name }}<br><br>
         {{ form.last_name }}<br><br>
         {{ form.email }}<br><br>
-        {{ form.password }}<br><br>
+        <label>Status</label>
         {{ form.is_active }}<br><br>
         {{ form.user}}<br><br>
         {{ form.cpf_cnpj }}<br><br>
