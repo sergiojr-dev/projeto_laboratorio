@@ -5,6 +5,7 @@ from .views.signup import Signup
 from .views.update_user import UpdateUser
 from .views.dashboard import Dashboard
 from .views.logout import Logout
+from .views.errors import CustomErrorServer
 
 
 urlpatterns = [
