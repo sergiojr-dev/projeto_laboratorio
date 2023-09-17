@@ -7,5 +7,29 @@
     {% else %}
         {% url login %}
     {% endif %}
+
+        <h1>Faça sua Reserva de Laboratório</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for lab in lab_active %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Num Laboratório</th>
+                        <th>Nome Laboratório</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>{{ lab.number_laboratory }}</td>
+                            <td>{{ lab.name_laboratory }}</td>
+                            <td>{{ form.as_table }}</td>
+                            <td><button type="submit" style="margin-bottom: 50px;">Agendar</button></td>
+                            
+                        </tr>
+                </tbody>
+            </table>
+            {% endfor %}
+        </form>
 </body>
 </html>
