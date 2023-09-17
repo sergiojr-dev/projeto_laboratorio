@@ -1,6 +1,6 @@
 from django import forms
 
-class SignupLab(forms.Form):
+class SignupLabForm(forms.Form):
     name_lab = forms.CharField(widget=
         forms.TextInput(
             attrs={'class': 'form-control-lab', 'placeholder': 'Cadastre o Laboratório'}),
