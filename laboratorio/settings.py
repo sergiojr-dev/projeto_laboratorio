@@ -147,5 +147,4 @@ AXE_COOLOFF_TIME = 1
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesStandaloneBackend',
     'django.contrib.auth.backends.ModelBackend',
-
 ]
